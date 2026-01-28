@@ -56,16 +56,17 @@
     </div>
     <script>
       const ball = document.querySelector(".item");
-      const position = {x: 50, y: 0};
       const restitution = Number(document.querySelector(".restitution").value);
       document.querySelector(".startButton").onclick = () => {
         let index = 0.01;
+        let y = 0;
         let v = 0;
         const demo = setInterval(() => {
-          const distance = 4.9 * (index ** 2) + v * index;
+          const distance = y + 4.9 * (index ** 2) + v * index;
           if (distance >= 700) {
             ball.style.top = 700 + "px";
-            v = 9.8 * index
+            v = -9.8 * index;
+            y = 700
           } else {
             ball.style.top = distance + "px";
           }
