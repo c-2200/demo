@@ -8,6 +8,11 @@
   </head>
   <body>
     <style>
+      .input {
+        display: grid;
+        grid-template-columns: 100px;
+        grid-template-rows: 50px;
+      }
       .container {
         position: relative;
         width: 100px;
@@ -16,10 +21,16 @@
       }
       .item {
         position: absolute;
+        top: 0px;
+        left: 50px;
       }
     </style>
     <div class="container">
-      <img src="img1.png" class="item" id="ball">
+      <img src="img1.png" class="item">
     </div>
+    <script>
+      const ball = document.querySelector(".item");
+      
+    </script>
   </body>
 </html>
