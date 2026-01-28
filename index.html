@@ -59,8 +59,8 @@
       const position = {x: 50, y: 0};
       const restitution = Number(document.querySelector(".restitution"));
       function move(num) {
-        position[y] += num;
-        ball.style.top = position[y];
+        position.y += num;
+        ball.style.top = position.y;
       }
       document.querySelector(".startButton").onclick = () => {
         let index = 1;
