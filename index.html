@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo</title>
+  </head>
+  <body>
+    <style>
+      .layout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 24px 0;
+      }
+      .input {
+        display: grid;
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 20px;
+        font-size: 15px
+      }
+      .startButton {
+        width: 100px;
+        height: 50px;
+        background-color: crimson;
+        color: white;
+        font-size: 22px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .container {
+        position: relative;
+        width: 100px;
+        height: 700px;
+        border: 1px solid black;
+      }
+      .item {
+        position: absolute;
+        top: 0px;
+        left: 50px;
+      }
+    </style>
+    <div class="layout">
+      <div class="input">
+        <div>反発係数：</div>
+        <input class="restitution" type="number" min="0">
+      </div>
+      <button class="startButton">START</button>
+      <div class="container">
+        <img src="img1.png" class="item">
+      </div>
+    </div>
+    <script>
+      const ball = document.querySelector(".item");
+      const position = {x: 50, y: 0};
+      const restitution = Number(document.querySelector(".restitution"));
+      function move(num) {
+        position[y] += num;
+        ball.style.top = position[y];
+      }
+      document.querySelector(".startButton").onclick = () => {
+        let index = 1;
+        let downward = true;
+        let v = 0;
+        const demo = setInterval(() => {
+          const distance = 4.9 * (index ** 2) / 10000;
+          if (v + position.y + distance >= 700) {
+            ball.style.top = 700 + "px";
+            v = 9.8 * index * restitution;
+            index = 1;
+          } else {
+            move(v + distance);
+          }
+        }, 10);
+      };
+    </script>
+  </body>
+</html>
