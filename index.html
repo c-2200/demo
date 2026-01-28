@@ -63,10 +63,10 @@
         let v = 0;
         const demo = setInterval(() => {
           const distance = y + 4.9 * (index ** 2) + v * index;
-          if (distance >= 700) {
-            ball.style.top = 700 + "px";
-            v = -9.8 * index;
-            y = 700
+          if (distance >= 640) {
+            ball.style.top = 640 + "px";
+            v = -9.8 * index + v;
+            y = 640
           } else {
             ball.style.top = distance + "px";
           }
