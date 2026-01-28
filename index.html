@@ -58,19 +58,20 @@
       const ball = document.querySelector(".item");
       const restitution = Number(document.querySelector(".restitution").value);
       document.querySelector(".startButton").onclick = () => {
-        let index = 0.01;
         let y = 0;
         let v = 0;
+        const g = 9.8;
+        const t = 0.01;
+        const floorY = 660;
         const demo = setInterval(() => {
-          const distance = y + 4.9 * (index ** 2) + v * index;
-          if (distance >= 640) {
-            ball.style.top = 640 + "px";
-            v = -9.8 * index + v;
-            y = 640
-          } else {
-            ball.style.top = distance + "px";
+          v += g * t;
+          y += v * t
+          if (y >= floorY) {
+            y = floorY;
+            v = -v * restitution;
           }
-          index += 0.01;
+          ball.style.top = y + "px";
+          t += 0.01;
         }, 10);
       };
     </script>
