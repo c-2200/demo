@@ -72,14 +72,14 @@
         let y = 0;
         let v = 0;
         const g = 9.8;
-        let t = 0.01;
+        const t = 0.01;
         const floorY = 660;
         const demo = setInterval(() => {
           v += g * t;
           y += v * t
           if (y >= floorY) {
             y = floorY;
-            v = -v * restitution;
+            v *= (-1 * restitution);
           }
           ball.style.top = y + "px";
         }, 10);
