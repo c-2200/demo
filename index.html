@@ -32,17 +32,6 @@
         border-radius: 10px;
         cursor: pointer;
       }
-      .resetButton {
-        width: 100px;
-        height: 50px;
-        background-color: crimson;
-        color: white;
-        font-size: 22px;
-        font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-      }
       .container {
         position: relative;
         width: 100px;
@@ -67,8 +56,8 @@
     </div>
     <script>
       const ball = document.querySelector(".item");
-      const restitution = Number(document.querySelector(".restitution").value);
       document.querySelector(".startButton").onclick = () => {
+        const restitution = Number(document.querySelector(".restitution").value);
         let y = 0;
         let v = 0;
         const g = 9.8;
