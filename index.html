@@ -32,16 +32,22 @@
         border-radius: 10px;
         cursor: pointer;
       }
-      .container {
+      .container1 {
         position: relative;
         width: 100px;
         height: 700px;
         border: 1px solid black;
       }
+      .container2 {
+        position: relative;
+        width: 700px;
+        height: 500px;
+        border: 1px solid black;
+      }
       .item {
         position: absolute;
         top: 0px;
-        left: 50px;
+        left: 0px;
       }
     </style>
     <div class="layout">
@@ -50,18 +56,26 @@
         <input class="restitution" type="number" min="0" max="1" step="0.01">
       </div>
       <button class="startButton">START</button>
-      <div class="container">
+      <div class="container1">
         <img src="img1.png" class="item">
+      </div>
+      <div class="input">
+        <input class="strength" type="number" min="0">
+      </div>
+      <button class="startButton" id="startButton1">START</button>
+      <div class="container2">
+        <img src="img1.png" class="item" id="ball1">
       </div>
     </div>
     <script>
       const ball = document.querySelector(".item");
+      const ball1 = document.getElementById("ball1");
       document.querySelector(".startButton").onclick = () => {
         const restitution = Number(document.querySelector(".restitution").value);
         let y = 0;
         let v = 0;
         const g = 9.8;
-        const t = 0.01;
+        const t = 0.05;
         const floorY = 660;
         const demo = setInterval(() => {
           v += g * t;
@@ -72,6 +86,36 @@
           }
           ball.style.top = y + "px";
         }, 10);
+      };
+      document.getElementById("startButton1").onclick = () => {
+        const restitution = Number(document.querySelector(".restitution").value);
+        let y = 0;
+        let x = 0;
+        let v = 0;
+        const g = 9.8;
+        const t = 0.05;
+        const floorY = 560;
+        const floorX = 660;
+        const roofX = 0;
+        const n = Number(document.querySelector(".strength").value);
+        const demo = setInterval(() => {
+          v += g * t;
+          y += v * t;
+          x += n * t;
+          if (y >= floorY) {
+            y = floorY;
+            v *= (-1 * restitution);
+          }
+          if (x >= floorX) {
+            x = floorX;
+            n *= -1;
+          } else if (x <= roofX) {
+            x = roofX;
+            n *= -1;
+          }
+          ball1.style.top = y + "px";
+          ball1.style.left = x + "px";
+        });
       };
     </script>
   </body>
