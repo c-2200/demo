@@ -94,10 +94,10 @@
         let v = 0;
         const g = 9.8;
         const t = 0.05;
-        const floorY = 560;
+        const floorY = 460;
         const floorX = 660;
         const roofX = 0;
-        const n = Number(document.querySelector(".strength").value);
+        let n = Number(document.querySelector(".strength").value);
         const demo = setInterval(() => {
           v += g * t;
           y += v * t;
