@@ -60,6 +60,7 @@
         <img src="img1.png" class="item">
       </div>
       <div class="input">
+        <div>力</div>
         <input class="strength" type="number" min="0">
       </div>
       <button class="startButton" id="startButton1">START</button>
@@ -92,12 +93,12 @@
         let y = 0;
         let x = 0;
         let v = 0;
+        let n = Number(document.querySelector(".strength").value);
         const g = 9.8;
         const t = 0.05;
         const floorY = 460;
         const floorX = 660;
         const roofX = 0;
-        let n = Number(document.querySelector(".strength").value);
         const demo = setInterval(() => {
           v += g * t;
           y += v * t;
